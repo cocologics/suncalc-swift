@@ -9,9 +9,9 @@
 import Foundation
 
 public class MoonIllumination {
-	var fraction:Double
-	var phase:Double
-	var angle:Double
+  public var fraction: Double
+  public var phase: Double
+  public var angle: Double
 	
   public init(fraction:Double, phase:Double, angle:Double) {
 		self.fraction = fraction

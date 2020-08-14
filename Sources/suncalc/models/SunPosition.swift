@@ -9,8 +9,8 @@
 import Foundation
 
 public class SunPosition {
-	var azimuth:Double
-	var altitude:Double
+  public var azimuth: Double
+  public var altitude: Double
 	
 	init(azimuth:Double, altitude:Double) {
 		self.azimuth = azimuth
