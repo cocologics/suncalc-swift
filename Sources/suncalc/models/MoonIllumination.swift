@@ -8,15 +8,14 @@
 
 import Foundation
 
-class MoonIllumination {
+public class MoonIllumination {
 	var fraction:Double
 	var phase:Double
 	var angle:Double
 	
-	init(fraction:Double, phase:Double, angle:Double) {
+  public init(fraction:Double, phase:Double, angle:Double) {
 		self.fraction = fraction
 		self.phase = phase
 		self.angle = angle
 	}
-	
 }

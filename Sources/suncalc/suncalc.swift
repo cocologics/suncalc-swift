@@ -9,38 +9,38 @@
 
 import Foundation
 
-class SunCalc {
+public class SunCalc {
 	let J0:Double = 0.0009
 	
-	var sunrise:Date
-	var sunriseEnd:Date
-	var goldenHourEnd:Date
-	var solarNoon:Date
-	var goldenHour:Date
-	var sunsetStart:Date
-	var sunset:Date
-	var dusk:Date
-	var nauticalDusk:Date
-	var night:Date
-	var nadir:Date
-	var nightEnd:Date
-	var nauticalDawn:Date
-	var dawn:Date
-	var blueHourEnd:Date
-	var blueHour:Date
+	public private(set) var sunrise:Date
+  public private(set) var sunriseEnd:Date
+  public private(set) var goldenHourEnd:Date
+  public private(set) var solarNoon:Date
+  public private(set) var goldenHour:Date
+  public private(set) var sunsetStart:Date
+  public private(set) var sunset:Date
+  public private(set) var dusk:Date
+  public private(set) var nauticalDusk:Date
+  public private(set) var night:Date
+  public private(set) var nadir:Date
+  public private(set) var nightEnd:Date
+  public private(set) var nauticalDawn:Date
+  public private(set) var dawn:Date
+  public private(set) var blueHourEnd:Date
+  public private(set) var blueHour:Date
 	
-	class func getSetJ(_ h:Double, phi:Double, dec:Double, lw:Double, n:Double, M:Double, L:Double) -> Double {
+	public class func getSetJ(_ h:Double, phi:Double, dec:Double, lw:Double, n:Double, M:Double, L:Double) -> Double {
 		let w:Double = TimeUtils.getHourAngleH(h, phi: phi, d: dec)
 		let a:Double = TimeUtils.getApproxTransitHt(w, lw: lw, n: n)
 		
 		return TimeUtils.getSolarTransitJDs(a, M: M, L: L)
 	}
 	
-	class func getTimes(_ date:Date, latitude:Double, longitude:Double) -> SunCalc {
+  public class func getTimes(_ date:Date, latitude:Double, longitude:Double) -> SunCalc {
 		return SunCalc(date:date, latitude:latitude, longitude:longitude)
 	}
 	
-	class func getSunPosition(_ timeAndDate:Date, latitude:Double, longitude:Double) -> SunPosition {
+  public class func getSunPosition(_ timeAndDate:Date, latitude:Double, longitude:Double) -> SunPosition {
 		let lw:Double = Constants.RAD() * -longitude
 		let phi:Double = Constants.RAD() * latitude
 		let d:Double = DateUtils.toDays(timeAndDate)
@@ -51,7 +51,7 @@ class SunCalc {
 		return SunPosition(azimuth: PositionUtils.getAzimuthH(H, phi: phi, dec: c.declination), altitude: PositionUtils.getAltitudeH(H, phi: phi, dec: c.declination))
 	}
 	
-	class func getMoonPosition(_ timeAndDate:Date, latitude:Double, longitude:Double) -> MoonPosition {
+  public class func getMoonPosition(_ timeAndDate:Date, latitude:Double, longitude:Double) -> MoonPosition {
 		let lw:Double = Constants.RAD() * -longitude
 		let phi:Double = Constants.RAD() * latitude
 		let d:Double = DateUtils.toDays(timeAndDate)
@@ -66,7 +66,7 @@ class SunCalc {
 		return MoonPosition(azimuth: PositionUtils.getAzimuthH(H, phi: phi, dec: c.declination), altitude: h, distance: c.distance)
 	}
 	
-	class func getMoonIllumination(_ timeAndDate:Date) -> MoonIllumination {
+  public class func getMoonIllumination(_ timeAndDate:Date) -> MoonIllumination {
 		let d:Double = DateUtils.toDays(timeAndDate)
 		let s:EquatorialCoordinates = SunUtils.getSunCoords(d)
 		let m:GeocentricCoordinates = MoonUtils.getMoonCoords(d)
@@ -83,7 +83,7 @@ class SunCalc {
 		return MoonIllumination(fraction: fraction, phase: phase, angle: angle)
 	}
 	
-	init(date:Date, latitude:Double, longitude:Double) {
+  public init(date:Date, latitude:Double, longitude:Double) {
 		let lw:Double = Constants.RAD() * -longitude
 		let phi:Double = Constants.RAD() * latitude
 		let d:Double = DateUtils.toDays(date)

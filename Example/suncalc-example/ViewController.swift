@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import suncalc
+
 
 class ViewController: UIViewController {
 
@@ -14,13 +16,13 @@ class ViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		let date:NSDate = NSDate()
-		let sunCalc:SunCalc = SunCalc.getTimes(date, latitude: 51.5, longitude: -0.1)
+		let date = Date()
+		let sunCalc = SunCalc.getTimes(date, latitude: 51.5, longitude: -0.1)
 		
-		var formatter:NSDateFormatter = NSDateFormatter()
+		var formatter:DateFormatter = DateFormatter()
 		formatter.dateFormat = "HH:mm"
-		formatter.timeZone = NSTimeZone(abbreviation: "GMT")
-		var sunriseString:String = formatter.stringFromDate(sunCalc.sunrise)
+		formatter.timeZone = TimeZone(abbreviation: "GMT")
+    let sunriseString = formatter.string(from: sunCalc.sunrise)
 		timeLabel.text = sunriseString
 	}
 
